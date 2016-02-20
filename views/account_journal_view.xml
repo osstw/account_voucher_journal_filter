@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_account_journal_form" model="ir.ui.view">
+            <field name="name">account.journal.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="journal_group_id"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+        <record id="journal_group_action_list" model="ir.actions.act_window">
+            <field name="name">Journal Groups</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.journal.group</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Empty now.
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+
+
+        <menuitem id="journal_groups_menu" name="Journal Groups"
+                  parent="account.menu_journals"
+                  action="account_voucher_journal_filter.journal_group_action_list" sequence=""/>
+    </data>
+</openerp>
